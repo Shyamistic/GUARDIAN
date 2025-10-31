@@ -22,7 +22,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ============= CONFIG =============
-API_URL = "https://guardian-backend.onrender.com/api"
+API_URL = "https://guardian-2-sfa9.onrender.com/api"
 
 # Add agents to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'agents'))
