@@ -1,0 +1,63 @@
+{
+  "timestamp": "2025-10-31T16:25:47.388579",
+  "vehicles": [
+    {
+      "vehicle_id": "VH1001",
+      "timestamp": "2025-10-31T16:25:47.387881",
+      "engine_temp_celsius": 96.12,
+      "oil_pressure_bar": 3.84,
+      "rpm": 3006.0,
+      "fuel_consumption_kmpl": 8.65,
+      "battery_voltage": 12.85,
+      "tire_pressure_psi": [
+        30.95,
+        31.08,
+        31.48,
+        29.74
+      ],
+      "sensor_health": 56.8,
+      "location": "Delhi",
+      "alert_status": "WARNING",
+      "degradation_factor": 0.86
+    },
+    {
+      "vehicle_id": "VH1002",
+      "timestamp": "2025-10-31T16:25:47.387928",
+      "engine_temp_celsius": 87.97,
+      "oil_pressure_bar": 4.27,
+      "rpm": 2746.0,
+      "fuel_consumption_kmpl": 11.97,
+      "battery_voltage": 12.76,
+      "tire_pressure_psi": [
+        33.09,
+        32.68,
+        31.02,
+        32.84
+      ],
+      "sensor_health": 93.52,
+      "location": "Mumbai",
+      "alert_status": "NORMAL",
+      "degradation_factor": 0.13
+    },
+    {
+      "vehicle_id": "VH1003",
+      "timestamp": "2025-10-31T16:25:47.387950",
+      "engine_temp_celsius": 94.15,
+      "oil_pressure_bar": 4.46,
+      "rpm": 3039.0,
+      "fuel_consumption_kmpl": 9.89,
+      "battery_voltage": 12.75,
+      "tire_pressure_psi": [
+        31.5,
+        30.97,
+        29.44,
+        31.48
+      ],
+      "sensor_health": 93.52,
+      "location": "Bangalore",
+      "alert_status": "NORMAL",
+      "degradation_factor": 0.13
+    }
+  ],
+  "update_count": 216
+}

@@ -1,0 +1,40 @@
+{
+  "vehicles": [
+    {
+      "vehicle_id": "VH1001",
+      "owner_name": "Owner 1",
+      "model": "Hero Splendor",
+      "health_score": 72,
+      "risk_level": "MEDIUM",
+      "created_at": "2025-10-31T15:35:11.319611",
+      "last_analyzed": "2025-10-31T15:35:11.319645"
+    },
+    {
+      "vehicle_id": "VH1002",
+      "owner_name": "Owner 2",
+      "model": "Mahindra XUV500",
+      "health_score": 85,
+      "risk_level": "LOW",
+      "created_at": "2025-10-31T15:35:11.319649",
+      "last_analyzed": "2025-10-31T15:35:11.319650"
+    }
+  ],
+  "workflows": [],
+  "alerts": [
+    {
+      "alert_id": "ALT_001",
+      "vehicle_id": "VH1001",
+      "severity": "CRITICAL",
+      "message": "Bearing failure predicted in 3 days",
+      "created_at": "2025-10-31T15:35:11.319653",
+      "acknowledged": false
+    }
+  ],
+  "appointments": [],
+  "analytics": {
+    "total_predictions": 47,
+    "total_alerts": 12,
+    "total_appointments": 8,
+    "cost_savings": 2450000
+  }
+}
