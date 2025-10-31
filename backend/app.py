@@ -7,7 +7,11 @@ import logging
 import threading
 import random
 import time
+from dotenv import load_dotenv
+import os
 
+# Load environment variables
+load_dotenv()
 # Setup logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -512,3 +516,67 @@ if __name__ == "__main__":
     import os
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=False, threaded=True)
+    from flask import Flask, jsonify, request
+from flask_cors import CORS
+from agents.guardian_crew import run_guardian_crew
+import json
+
+app = Flask(__name__)
+CORS(app)
+
+# ============= HEALTH CHECK =============
+@app.route('/api/health', methods=['GET'])
+def health():
+    return jsonify({
+        "service": "GUARDIAN Backend",
+        "status": "OK",
+        "timestamp": "2025-10-31T12:05:38.765719",
+        "version": "2.0.0-agentic",
+        "architecture": "Multi-Agent CrewAI System"
+    }), 200
+
+# ============= AUTONOMOUS CREW ENDPOINT =============
+@app.route('/api/crew/diagnose', methods=['POST'])
+def diagnose_vehicle():
+    """Trigger the autonomous GUARDIAN crew for a vehicle."""
+    try:
+        data = request.json
+        vehicle_id = data.get('vehicle_id', 'VH1001')
+        sensor_data = data.get('sensor_data', {
+            'engine_temp_celsius': 95,
+            'oil_pressure_bar': 3.2,
+            'sensor_health': 65,
+            'rpm': 4500,
+            'degradation_factor': 0.78
+        })
+        
+        # RUN THE AUTONOMOUS CREW
+        result = run_guardian_crew(vehicle_id, sensor_data)
+        
+        return jsonify({
+            "status": "success",
+            "data": result,
+            "message": "Autonomous crew decision completed"
+        }), 200
+    
+    except Exception as e:
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500
+
+# ============= HEALTH ANALYTICS =============
+@app.route('/api/analytics', methods=['GET'])
+def analytics():
+    return jsonify({
+        "status": "success",
+        "data": {
+            "total_predictions": 47,
+            "total_alerts": 12,
+            "autonomous_decisions": 8,
+            "crew_interventions": 4
+        }
+    }), 200
+
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5000)
