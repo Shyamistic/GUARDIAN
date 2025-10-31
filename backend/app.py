@@ -580,3 +580,104 @@ def analytics():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
+@app.route('/api/vehicles', methods=['GET'])
+def get_vehicles():
+    """Get list of all vehicles"""
+    return jsonify({
+        "status": "success",
+        "data": [
+            {
+                "vehicle_id": "VH1001",
+                "make": "Tata",
+                "model": "1613",
+                "year": 2022,
+                "health_status": "Critical",
+                "engine_temp": 105,
+                "oil_pressure": 2.2,
+                "last_check": "2025-10-31T14:30:00Z",
+                "alert_level": "high"
+            },
+            {
+                "vehicle_id": "VH1002",
+                "make": "Ashok Leyland",
+                "model": "2516",
+                "year": 2023,
+                "health_status": "Healthy",
+                "engine_temp": 85,
+                "oil_pressure": 3.5,
+                "last_check": "2025-10-31T14:35:00Z",
+                "alert_level": "none"
+            },
+            {
+                "vehicle_id": "VH1003",
+                "make": "Bharat Benz",
+                "model": "1617R",
+                "year": 2023,
+                "health_status": "Warning",
+                "engine_temp": 95,
+                "oil_pressure": 3.0,
+                "last_check": "2025-10-31T14:28:00Z",
+                "alert_level": "medium"
+            }
+        ]
+    }), 200
+
+@app.route('/api/workflows', methods=['GET'])
+def get_workflows():
+    """Get workflow execution history"""
+    return jsonify({
+        "status": "success",
+        "data": [
+            {
+                "workflow_id": "WF_001",
+                "vehicle_id": "VH1001",
+                "timestamp": "2025-10-31T14:30:00Z",
+                "agents_involved": ["Diagnostic Specialist", "Customer Engagement", "ROI Analyst", "Master Orchestrator"],
+                "status": "completed",
+                "decision": "Schedule urgent maintenance",
+                "estimated_savings": 35000
+            },
+            {
+                "workflow_id": "WF_002",
+                "vehicle_id": "VH1003",
+                "timestamp": "2025-10-31T12:15:00Z",
+                "agents_involved": ["Diagnostic Specialist", "ROI Analyst"],
+                "status": "completed",
+                "decision": "Monitor for 48 hours",
+                "estimated_savings": 15000
+            }
+        ]
+    }), 200
+
+@app.route('/api/alerts', methods=['GET'])
+def get_alerts():
+    """Get predictive alerts"""
+    return jsonify({
+        "status": "success",
+        "data": [
+            {
+                "alert_id": "ALR_001",
+                "vehicle_id": "VH1001",
+                "severity": "critical",
+                "predicted_failure": "Bearing failure",
+                "confidence": 89,
+                "days_to_failure": "3-5",
+                "recommended_action": "Immediate service required",
+                "estimated_cost_if_ignored": 50000,
+                "preventive_cost": 15000,
+                "timestamp": "2025-10-31T14:30:00Z"
+            },
+            {
+                "alert_id": "ALR_002",
+                "vehicle_id": "VH1003",
+                "severity": "warning",
+                "predicted_failure": "Oil system degradation",
+                "confidence": 76,
+                "days_to_failure": "7-10",
+                "recommended_action": "Schedule maintenance within a week",
+                "estimated_cost_if_ignored": 35000,
+                "preventive_cost": 12000,
+                "timestamp": "2025-10-31T12:15:00Z"
+            }
+        ]
+    }), 200
